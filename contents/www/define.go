@@ -8,10 +8,13 @@ import (
 type Content struct{}
 
 func (c *Content) Define(con *types.Package) {
-	con.Init("homepage")
+	con.Init("intelfikeのHP")
 
 	topPack := con.NewChild("top")
 	topPack.FallDown(&proc.Top{})
+
+	worksPack := con.NewChild("works")
+	worksPack.FallDown(&proc.Works{})
 
 	con.Before = func(tpl *types.TplData, info types.PageInfo) *types.Redirect {
 		tpl.Assign("Packages", con.ChildrenArray())

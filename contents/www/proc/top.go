@@ -7,9 +7,9 @@ import (
 type Top struct{}
 
 func (p *Top) Define(pack *types.Package) {
-	pack.Init("top")
+	pack.Init("トップページ")
 
-	pack.SetMethod("Index", "top", func(tpl *types.TplData, info types.PageInfo) *types.Redirect {
+	pack.SetMethod("Index", "トップページ", func(tpl *types.TplData, info types.PageInfo) *types.Redirect {
 		return nil
 	})
 }
