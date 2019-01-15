@@ -36,4 +36,8 @@ func (p *Usage) Define(pack *types.Package) {
 	pack.SetMethod("SWord", "検索テキスト", func(tpl *types.TplData, info types.PageInfo) *types.Redirect {
 		return nil
 	})
+
+	pack.SetMethod("CommandMode", "コマンドモード", func(tpl *types.TplData, info types.PageInfo) *types.Redirect {
+		return nil
+	})
 }
