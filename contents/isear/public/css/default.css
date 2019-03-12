@@ -1,0 +1,63 @@
+body {
+	background-color: white;
+}
+
+header {
+	background: linear-gradient(-90deg, #ACF, #DEF);
+}
+header h1 {
+	margin: 0;
+	padding: 16px;
+}
+.normal:hover, .normal:visited, .normal:link, .normal:active{
+	color: black;
+	text-decoration: none;
+}
+
+nav {
+	/*padding: 16px 16px 42px 0;*/
+	background-color: #ffb;
+}
+
+#usage-links nav {
+	background-color: white;
+}
+
+h2 {
+	padding-left: 32px;
+	background-image: url("/favicon.ico");
+	background-repeat: no-repeat;
+	color: #666;
+}
+
+footer{
+	bottom: 0;
+	width: 100%;
+	/* Set the fixed height of the footer here */
+	background-color: #DDD;
+	padding: 8px;
+}
+
+h3 {
+	border-bottom: 1px solid black;
+	padding: 2px;
+}
+h4 {
+	margin-top: 32px;
+	margin-bottom: 8px;
+}
+p{
+	margin: 8px;
+}
+
+table{
+	background-color: #fed;
+}
+
+th {
+	background-color: #fdb;
+}
+
+td, th {
+	padding: 4px;
+}

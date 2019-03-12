@@ -1,26 +1,16 @@
-// UNIX哲学に出来る限り従う方向で！
-// isearとホームページを作りたい
-// lazyの構成を参考に
 package main
 
 import (
 	"flag"
-	"fmt"
-	"net/http"
 
-	_ "github.com/intelfike/web/contents"
-	"github.com/intelfike/web/policy"
+	"github.com/intelfike/mulpage"
+	"github.com/intelfike/web/contents"
 )
 
-var port = flag.String("http", ":80", "HTTP port number.")
-
-func init() { // コンテンツのリストを定義
-	flag.Parse()
-
-	http.HandleFunc("/", policy.Listener)
-}
+var port = flag.String("http", ":8888", "HTTP port number.")
 
 func main() {
-	fmt.Printf("Start HTTP Server localhost%s\n", *port)
-	fmt.Println(http.ListenAndServe(*port, nil))
+	flag.Parse()
+
+	mulpage.All(&contents.App{}, "web", *port)
 }
