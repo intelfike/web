@@ -2,7 +2,7 @@
 
 <h3>isearのポップアップ</h3>
 <p>拡張機能のアイコンをクリックすることでポップアップします。</p>
-<table>
+<table class="table">
 	<tr>
 		<td>[Ctrl+Enter]</td>
 		<td>Google検索</td>
@@ -31,7 +31,7 @@
 
 <h3>Firefox</h3>
 <p>Firefox版では、isearインストール時に自動的に割り当てられます。</p>
-<table>
+<table class="table">
 	<tr>
 		<td>[Ctrl+Shift+F]</td>
 		<td>isearを起動する</td>

@@ -16,27 +16,46 @@
 			<img src="/data/image/isear_document_title.png" height="40" alt="isearロゴ">
 		</a>
 	</h1>
-	<nav class="navbar">
+	<nav id="global-menu" class="navbar p-0">
 		<ul class="list-inline m-0">
-			<li class="list-inline-item m-1"><a href="/_top/index">トップ</a></li>
-			<li class="list-inline-item m-1"><a data-toggle="collapse" href="#usage-links" role="button" aria-expanded="false">使い方</a></li>
-			<li class="list-inline-item m-1"><a href="/_install/index">インストール</a></li>
-			<li class="list-inline-item m-1"><a href="/_support/index">サポート</a></li>
-			<li class="list-inline-item m-1"><a href="/_thanks/index">Thanks</a></li>
+			<a class="list-inline-item p-2 top" href="/_top/index">トップ</a>
+			<a class="list-inline-item p-2 usage
+				{{- if (eq .Info.Group "usage")}} collapsed{{end -}}
+			" data-toggle="collapse" href="#usage-links" role="button" aria-expanded="
+				{{- print (eq .Info.Group "usage") -}}
+			">使い方</a>
+			<a class="list-inline-item p-2 install" href="/_install/index">インストール</a>
+			<a class="list-inline-item p-2 support" href="/_support/index">サポート</a>
+			<a class="list-inline-item p-2 thanks" href="/_thanks/index">Thanks</a>
 		</ul>
 	</nav>
-	<div id="usage-links" class="collapse">
+	{{if (eq .Info.Group "usage")}}
+	<div id="usage-links" class="collapse show">
 		<nav class="navbar">
-			<ul class="list-group m-0">
-				<li class="list-item m-1"><a href="/_usage/functions">機能</a></li>
-				<li class="list-item m-1"><a href="/_usage/settings">設定</a></li>
-				<li class="list-item m-1"><a href="/_usage/name">名称・用語</a></li>
-				<li class="list-item m-1"><a href="/_usage/sKey">ショートカットキー</a></li>
-				<li class="list-item m-1"><a href="/_usage/sWord">検索テキスト</a></li>
-				<li class="list-item m-1"><a href="/_usage/commandMode">コマンドモード</a></li>
+			<ul class="list-inline m-0">
+				<a class="list-inline-item functions" href="/_usage/functions">機能</a>
+				<a class="list-inline-item settings" href="/_usage/settings">設定</a>
+				<a class="list-inline-item name" href="/_usage/name">名称・用語</a>
+				<a class="list-inline-item sKey" href="/_usage/sKey">ショートカットキー</a>
+				<a class="list-inline-item sWord" href="/_usage/sWord">検索テキスト</a>
+				<a class="list-inline-item commandMode" href="/_usage/commandMode">コマンドモード</a>
 			</ul>
 		</nav>
 	</div>
+	{{else}}
+	<div id="usage-links" class="collapse">
+		<nav class="navbar">
+			<ul class="list-group m-0">
+				<a class="m-1" href="/_usage/functions">機能</a>
+				<a class="m-1" href="/_usage/settings">設定</a>
+				<a class="m-1" href="/_usage/name">名称・用語</a>
+				<a class="m-1" href="/_usage/sKey">ショートカットキー</a>
+				<a class="m-1" href="/_usage/sWord">検索テキスト</a>
+				<a class="m-1" href="/_usage/commandMode">コマンドモード</a>
+			</ul>
+		</nav>
+	</div>
+	{{end}}
 </header>
 
 <div id="middle">
@@ -51,6 +70,20 @@
 <footer calss="footer">
 	&copy;2018.01 intelfike(intelfike@gmail.com)
 </footer>
+
+<script>
+document.body.onload = e => {
+	var gp = document.querySelector("#global-menu .{{$.Info.Group}}")
+	gp.className += ' current-group'
+	gp.href = '#'
+
+	{{if (eq .Info.Group "usage") -}}
+	var us = document.querySelector("#usage-links .{{$.Info.Page}}")
+	us.className += ' current-page'
+	us.href = '#'
+	{{- end}}
+}
+</script>
 
 	<!-- V4 version -->
 	<!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap.native@2.0.15/dist/bootstrap-native-v4.min.js"></script> -->
