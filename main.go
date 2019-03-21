@@ -1,16 +1,20 @@
 package main
 
 import (
-	"flag"
+	"log"
+	"net/http"
 
 	"github.com/intelfike/mulpage"
 	"github.com/intelfike/web/contents"
+	"golang.org/x/crypto/acme/autocert"
 )
 
-var port = flag.String("http", ":8888", "HTTP port number.")
-
 func main() {
-	flag.Parse()
+	pack := mulpage.NewPackage(&contents.App{})
 
-	mulpage.All(&contents.App{}, "web", *port)
+	mux := http.NewServeMux()
+	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		mulpage.Handler(w, r, pack, "web")
+	})
+	log.Fatal(http.Serve(autocert.NewListener("isear.intelfike.net"), mux))
 }
